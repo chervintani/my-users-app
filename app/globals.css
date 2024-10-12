@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,8 +6,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  font-family: "Afacad Flux", sans-serif;
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -24,4 +26,4 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-}
+} */
