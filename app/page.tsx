@@ -55,7 +55,7 @@ const UsersPage: React.FC = () => {
         {users.map((user) => (
           <div key={user.id} className="border border-solid border-[#ccc] rounded-lg p-4 text-center bg-gray-50 hover:shadow-md">
             <div className="flex justify-center">
-              <Image src={user.avatar} alt={`${user.first_name} ${user.last_name}`} width={100} height={100} className="rounded-full self-center h-24 w-24 object-cover border-gray-500 border" priority />
+              <Image src={user.avatar} alt={`${user.first_name} ${user.last_name}`} width={100} height={100} className="rounded-full self-center h-24 w-24 object-cover border-gray-500 border" />
             </div>
             <h3 className="text-h3">{`${user.first_name} ${user.last_name}`}</h3>
             <p className="text-[20px]">Email: {user.email}</p>
