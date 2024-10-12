@@ -15,7 +15,6 @@ interface User {
 const UsersPage: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [page, setPage] = useState<number>(1);
-  const [totalPage, setTotalPage] = useState<number>(1);
   const [hasMore, setHasMore] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -26,7 +25,6 @@ const UsersPage: React.FC = () => {
       const newUsers: User[] = response.data.data;
 
       setUsers((prevUsers) => [...prevUsers, ...newUsers]);
-      setTotalPage(response.data.total_pages)
 
       if (response.data.total_pages === page) {
         setHasMore(false)
@@ -55,7 +53,7 @@ const UsersPage: React.FC = () => {
         {users.map((user) => (
           <div key={user.id} className="border border-solid border-[#ccc] rounded-lg p-4 text-center bg-gray-50 hover:shadow-md">
             <div className="flex justify-center">
-              <Image src={user.avatar} alt={`${user.first_name} ${user.last_name}`} width={100} height={100} className="rounded-full self-center h-24 w-24 object-cover border-gray-500 border" />
+              <Image src={user.avatar} alt={`${user.first_name} ${user.last_name}`} width={100} height={100} className="rounded-full self-center h-24 w-24 object-cover border-gray-500 border" priority />
             </div>
             <h3 className="text-h3">{`${user.first_name} ${user.last_name}`}</h3>
             <p className="text-[20px]">Email: {user.email}</p>
@@ -66,12 +64,9 @@ const UsersPage: React.FC = () => {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <>
-            <p>Page {page} of {totalPage}</p>
-            <button onClick={loadMore} disabled={loading || !hasMore} className="mt-4 py-2 px-4 bg-slate-700 disabled:bg-slate-300 text-white rounded-md m-4 text-h5">
-              Load more
-            </button>
-          </>
+          <button onClick={loadMore} disabled={loading || !hasMore} className="mt-4 py-2 px-4 bg-slate-700 disabled:bg-slate-300 text-white rounded-md m-4 text-h5">
+            Load more
+          </button>
         )}
       </div>
     </div>
