@@ -22,7 +22,7 @@ const UsersPage: React.FC = () => {
   const fetchUsers = async (page: number) => {
     setLoading(true);
     try {
-      const response = await axios.get(`https://reqres.in/api/users?page=${page}&per_page=5`);
+      const response = await axios.get(`https://reqres.in/api/users?page=${page}`);
       const newUsers: User[] = response.data.data;
 
       setUsers((prevUsers) => [...prevUsers, ...newUsers]);
